@@ -1,0 +1,285 @@
+' VBA code test
+' Last updated 07/0/2021 17:02
+
+' VBA code test
+' Last updated 07/05/2021 09:21
+
+
+Sub vbachallengebasic()
+
+' The following code is partially derived from Wonderful Data 2.3.6 Credit Card Checker
+' The following code is partially derived from basic and advanced solutions
+' LINK: https://wonderful-data-c75b08.netlify.app/02-vba/activities/day-03/credit_card_checker_cell_comparison/
+
+' -----------
+  ' ERROR OBJECT REQUIRED
+  ' #1 Set dimensions for  ws for worksheets <ticker> renamed tick, <date> renamed day, <open> renamed start, <high>, <low>, <close> renamed finished, <vol>
+  ' Dim ws As Worksheets
+  Dim tick As String
+  Dim day As Integer
+  Dim start As Double
+  Dim high As Double
+  Dim low As Double
+  Dim finished As Double
+  Dim vol As Integer
+
+
+ ' Set dimensions for Ticker, Yearly Change, Percent Change, Total Stock Volume
+    ' Dim Ticker As String
+    ' Dim YearlyChange As Double
+    ' Dim PercentChange As Double
+    ' Dim TotalStockVolume As Integer
+    
+    
+  
+  ' #2 Set initial values for ws, tick, day, start, <high>, <low>, finished, <vol> as 0
+  ' ERROR ws = A Invalid Use of Property
+   ' ws = A
+   tick = 0
+   day = 0
+   start = 0#
+   high = 0#
+   low = 0#
+   finished = 0#
+   vol = 0#
+ 
+
+ ' Set initial values for Ticker, YearlyChange, PercentChange, and TotalStockVolume as 0
+  ' Ticker = 0#
+  ' YearlyChange = 0#
+  ' PercentChange = 0#
+  ' TotalStockVolume = 0#
+
+
+ 
+  
+  
+ 
+    ' #3 Define Lastrow Code derived from Start Count
+   LastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+   
+   ' #4 Set title row
+   For i = 2 To LastRow
+   
+   ' Check if we are still within the same ticker, if it is not...
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+      ' Set the tick
+      tick = Cells(i, 1).Value
+
+      ' Add to the TotalStockVolume
+      TotalStockVolume = TotalStockVolume + [Cells(i, 6).Value - Cells(i, 3).Value ]
+
+      ' Print the Ticker in the Summary Table
+      Range("G" & Ticker_row).Value = tick
+
+      ' Print the TotalStockVolume to the Summary Table
+      Range("H" & TotalStockVolume_row).Value = TotalStockVolume
+
+      ' Add one to the summary table row
+      Summary_Table_Row = Summary_Table_Row + 1
+      
+      ' Reset the Ticker
+      tick = 0
+
+    ' If the cell immediately following a row is the same tick...
+    Else
+
+      ' Add to the TotalStockVolume
+      TotalStockVolume = TotalStockVolume + [Cells(i, 6).Value - Cells(i, 3).Value ]
+
+
+    End If
+
+  Next i
+   
+   ' #6 Store results in variables
+   
+   ' #7 Handle zero total volume
+   
+   ' #8 Nested If Statement: if total = 0 then
+     ' Else find first nonzero starting value
+     ' If starting value = 0 then calculate change
+     ' Then start next stock ticker
+     ' Then print results
+     ' Select case change
+     
+     'End If
+     'Reset Variables for new stock ticker
+     
+  ' #9 Take Max and Min (Bonus)
+  
+  ' #10 Next ws
+  ' #11 End Sub
+  ' Shorten For Loop, make it do one thing at a time, then add each function
+
+ ' -------
+
+
+'----------------
+
+End Sub
+
+' Based on work from Contantion Ciochina, VBA challenge bonus
+' Sub vbachallengebonus()
+' First define dimensions for i, last row count, and worksheet; same as source material
+' Dim i As Long
+' Dim last_row_count As Long
+' Dim ws As Worksheet
+' Second define values for rows and columns of the table THIS IS RELEVANT TO THE MAIN PROJECT; same as source material
+' Range("p1").Value = "Ticker"
+' Range("q1").Value = "Value"
+' Range("o2").Value = "Greatest % Increase"
+' Range("o3").Value = "Greatest % Decrease"
+' Range("o4").Value = "Greatest Total Volume"
+' Third assign the locations for the three values under "Value"
+'
+
+
+' Fourth create For Loop
+
+
+
+' Next ws
+' End Sub
+Sub vbachallengebasic()
+
+' The following code is partially derived from Wonderful Data 2.3.6 Credit Card Checker
+' The following code is partially derived from basic and advanced solutions
+' LINK: https://wonderful-data-c75b08.netlify.app/02-vba/activities/day-03/credit_card_checker_cell_comparison/
+
+' -----------
+  ' ERROR OBJECT REQUIRED
+  ' #1 Set dimensions for  ws for worksheets <ticker> renamed tick, <date> renamed day, <open> renamed start, <high>, <low>, <close> renamed finished, <vol>
+  ' Dim ws As Worksheets
+  Dim tick As String
+  Dim day As Integer
+  Dim start As Double
+  Dim high As Double
+  Dim low As Double
+  Dim finished As Double
+  Dim vol As Integer
+
+
+ ' Set dimensions for Ticker, Yearly Change, Percent Change, Total Stock Volume
+    Dim Ticker As String
+    Dim YearlyChange As Double
+    Dim PercentChange As Double
+    Dim TotalStockVolume As Integer
+  
+  ' #2 Set initial values for ws, tick, day, start, <high>, <low>, finished, <vol> as 0
+  ' ERROR ws = A Invalid Use of Property
+   ' ws = A 
+   tick = 0
+   day = 0
+   start = 0#
+   high = 0#
+   low = 0#
+   finished = 0#
+   vol = 0#
+ 
+
+ ' Set initial values for Ticker, YearlyChange, PercentChange, and TotalStockVolume as 0  
+   Ticker = 0#
+   YearlyChange = 0#
+   PercentChange = 0#
+   TotalStockVolume = 0#
+
+' Keep track of the location for ws, tick, day, start, <high>, <low>, finished, <vol>, Ticker, YearlyChange, PercentChange, and TotalStockVolume 
+  Dim tick_row As Integer
+  Dim day_row As Integer
+  Dim start_row As Integer
+  Dim high_row As Integer
+  Dim low_row As Integer
+  Dim finished_row As Integer
+  Dim vol_row As Integer
+  Dim Ticker_row As Integer
+  Dim YearlyChange_row As Integer
+  Dim PercentChange_row As Integer
+  Dim TotalStockVolume_row As Integer
+ 
+  tick_row = 1
+  day_row = 2
+  start_row = 3
+  high_row = 4
+  low_row = 5
+  finished_row = 6
+  vol_row = 7
+  Ticker_row = 9
+  YearlyChange_row = 10
+  PercentChange_row = 11
+  TotalStockVolume_row = 12
+  
+ 
+    ' #3 Define Lastrow Code derived from Start Count
+   LastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+   
+   ' #4 Set title row
+   For i = 2 to LastRow
+   
+   ' Check if we are still within the same ticker, if it is not...
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+      ' Set the tick
+      tick = Cells(i, 1).Value
+
+      ' Add to the TotalStockVolume
+      TotalStockVolume = TotalStockVolume + [Cells(i, 6).Value - Cells(i, 3).Value ]
+
+      ' Print the Ticker in the Summary Table
+      Range("G" & Ticker_Row).Value = tick
+
+      ' Print the TotalStockVolume to the Summary Table
+      Range("H" & TotalStockVolume_row).Value = TotalStockVolume
+
+      ' Add one to the summary table row
+      Summary_Table_Row = Summary_Table_Row + 1
+      
+      ' Reset the Ticker
+      tick = 0
+
+    ' If the cell immediately following a row is the same tick...
+    Else
+
+      ' Add to the TotalStockVolume
+      TotalStockVolume = TotalStockVolume + [Cells(i, 6).Value - Cells(i, 3).Value ]
+
+
+    End If
+
+  Next i
+   
+   ' #6 Store results in variables
+   
+   ' #7 Handle zero total volume
+   
+   ' #8 Nested If Statement: if total = 0 then
+     ' Else find first nonzero starting value
+     ' If starting value = 0 then calculate change
+     ' Then start next stock ticker
+     ' Then print results
+     ' Select case change
+     
+     'End If
+     'Reset Variables for new stock ticker
+     
+  ' #9 Take Max and Min (Bonus)
+  
+  ' #10 Next ws
+  ' #11 End Sub
+  ' Shorten For Loop, make it do one thing at a time, then add each function
+
+ ' ------- 
+
+
+'----------------
+
+End Sub
+
+
+
+
+
+
+
+
